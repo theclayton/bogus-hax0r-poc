@@ -7,8 +7,21 @@
     <script>
       console.log('Log demonstrating js being ran');
 
-      parentHTML = parent.getElementsByTagName("html");
-      parentHTML[0].innerHTML = "<h1>You've been played.</h1>"
+      // In case its not embedded as an iframe
+      try {
+        const parentHTML = parent.getElementsByTagName("html");
+        parentHTML[0].innerHTML = "<h1>You've been played.</h1>";
+      } catch (e) {
+        console.log(e.message)
+
+        try {
+          const documentHTML = document.getElementsByTagName("html");
+          documentHTML[0].innerHTML = "<h1>You've been played.</h1>";
+
+        } catch (e) {
+          console.log(e.message)
+        }
+      }
       
       alert('This is an example fo you getting hax0red');
     </script>

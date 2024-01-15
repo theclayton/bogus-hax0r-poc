@@ -1,18 +1,35 @@
+<!--
+  This file can be used along side a variety of proof of concept exploits.
+
+  The original usage was to demonstrate the effects of reflected XSS and
+  insecure server configuration vulnerabilities that allowed an attacker to
+  perform a click jacking attack by overlaying this page on top of the 
+  vulnerable website. The attack was able to bypass a strict Cloudflare WAF 
+  by injecting an iframe with a link to this page.
+-->
 <!DOCTYPE html>
-  <head>
-    <title>
-      Hax0red POC landing page
-    </title>
-  </head>
+
+<head>
+  <title>
+    Hax0red PoC example page
+  </title>
+</head>
+
 <body>
 
-<h1>This is an example of you getting hax0red.</h1>
-<p>Dont' worry you weren't actually hacked. This is just a demonstration of you being tricked into clicking a link and a possible scenario of malicious code ran on your computer...</p>
+  <h1>This is an example of you getting hax0red.</h1>
+  <p>Dont' worry you weren't actually hacked. This is just a demonstration of you being tricked into clicking a link and
+    a possible scenario of malicious code ran on your computer...</p>
 
-  <h3>Don't click sketchy links! Don't allow user input to touch innerHTML, v-html, th:utext, etc. Don't allow unauthenitcated sending of emails via your APIs!</h3>
-  
+  <h3>Don't click sketchy links!</h3>
+
+  <hr>
+  <b>Developers:</b>
+  <p>Don't allow unescaped user-input into functions like: innerHTML, v-html, th:utext, etc.</p>
+
   <img src="./wojak-riding-brain-elephant-space.png">
-  
+
   <script>console.log('Log demonstrating js being ran')</script>
 </body>
+
 </html>

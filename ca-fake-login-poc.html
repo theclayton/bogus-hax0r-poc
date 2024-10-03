@@ -1,0 +1,126 @@
+<html>
+<style>
+    body {
+        background: linear-gradient(to bottom, #336699, #99c2cc);
+        font-family: Arial, sans-serif;
+        color: #336699;
+        display: flex;
+        justify-content: center;
+        /* align-items: center; */
+        height: 100vh;
+    }
+
+    .wrapper {
+        width: 480px;
+        padding: 70px 20px;
+    }
+
+    .container {
+        background: #fff;
+        padding: 50px;
+        border-radius: 5px;
+        box-shadow: 0px 0px 46px -3px rgba(0, 0, 0, 0.35);
+        text-align: center;
+    }
+
+    .logo {
+        padding: 30px 20px 65px 20px;
+        color: #336699;
+    }
+
+    .logo span {
+        color: #99c2cc;
+    }
+
+    form {
+        width: 352px;
+    }
+
+    .email {
+        text-align: left;
+    }
+
+    label {
+        color: #1A202C;
+        font-size: 14px;
+        margin-bottom: 15px;
+        font-weight: bold;
+    }
+
+    input[type="email"] {
+        font-size: 14px;
+        color: black;
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 20px;
+        border: none;
+        border-bottom: 1px solid #ccc;
+    }
+
+    .lockIcon {
+        margin-right: 5px;
+    }
+
+    .submitButton {
+        width: 100%;
+        margin-top: 13px;
+        margin-bottom: 28px;
+        padding: 13px;
+        background: #0B4688;
+        color: #fff;
+        border: none;
+        border-radius: 7px;
+        cursor: pointer;
+        font-size: 14pt;
+    }
+
+    footer {
+        width: 100%;
+        text-align: center;
+        padding: 10px;
+        color: #fff;
+    }
+
+    .lightgrey {
+        color: #9ea8b6;
+        font-size: 12px;
+        line-height: 18px;
+
+    }
+</style>
+
+<body>
+    <div class="wrapper">
+        <div class="container">
+            <div class="logo">
+                <img src="https://login.complyauto.com/assets/logos/corp_logo_vert_dark_on_light_bg.svg" height="32"
+                    width="310">
+            </div>
+            <form>
+                <div class="email">
+                    <label for="email">Email *</label>
+                </div>
+                <input type="email" id="email" name="email" required>
+                <div class="submitButton"
+                    onclick="alert('Uh oh! This login page is fake! \nThis is an example of one way attackers could trick you into telling them your email, password and mfa code.')">
+                    <svg class="lockIcon" stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24"
+                        stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" height="1em"
+                        width="1em" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                        <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                    </svg>
+                    Sign In
+                </div>
+                <p class="lightgrey">By supplying your user ID (email) and password above, I agree to read the
+                    ComplyAuto Terms of Service before accessing information on this website. I understand my
+                    responsibility under the ComplyAuto Terms of Service to protect the information and data on this
+                    website.</p>
+            </form>
+        </div>
+        <footer>
+            <p>Copyright &copy; 2024 ComplyAuto LLC.</p>
+        </footer>
+    </div>
+</body>
+
+</html>

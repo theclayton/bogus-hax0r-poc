@@ -1,35 +1,67 @@
-<!--
-  This file can be used along side a variety of proof of concept exploits.
-
-  The original usage was to demonstrate the effects of reflected XSS and
-  insecure server configuration vulnerabilities that allowed an attacker to
-  perform a click jacking attack by overlaying this page on top of the 
-  vulnerable website. The attack was able to bypass a strict Cloudflare WAF 
-  by injecting an iframe with a link to this page.
--->
 <!DOCTYPE html>
 
 <head>
-  <title>
-    Hax0red PoC example page
-  </title>
+    <title>
+        Bogus Hax0r PoC
+    </title>
+
+    <script>
+        const dummyJWT = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkFkbWluIFVzZXIiLCJpYXQiOjE1MTYyMzkwMjJ9.asdfxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c";
+
+        sessionStorage.setItem('access_token', dummyJWT);
+        sessionStorage.setItem('session_state', 'active_authenticated');
+
+        localStorage.setItem('user_id', 'u_69420-1337-1776');
+        localStorage.setItem('user_email', 'cranjis@company-internal.com');
+        localStorage.setItem('user_full_name', 'Cranjis McBasketball');
+        localStorage.setItem('internal_permissions', JSON.stringify(['read', 'write', 'admin_panel_access', 'finance_view']));
+
+        const expiry = "; max-age=3600; path=/";
+
+        document.cookie = "auth_id_token=ID_1234567890_XD" + expiry;
+        document.cookie = "JSESSIONID=6958008A14A3B44C19203948F2996" + expiry;
+        document.cookie = "logged_in=true" + expiry;
+    </script>
+
 </head>
 
 <body>
 
-  <h1>This is an example of you getting hax0red.</h1>
-  <p>Dont' worry you weren't actually hacked. This is just a demonstration of you being tricked into clicking a link and
-    a possible scenario of malicious code ran on your computer...</p>
+    <h1>Welcome!</h1>
+    <p>This page is designed to help demonstrate the impact of a Cross-Site
+        Scripting (XSS) vulnerability. Right now its using a image tag that
+        for demonstration purposes, vulnerable to XSS and calls a script that
+        displays browser data, session info, IP address, initiates a download,
+        etc. </p>
 
-  <h3>Don't click sketchy links!</h3>
+    <img src="hiiiii"
+        onerror="let s=document.createElement('script');s.src='xss-impact.js';document.body.appendChild(s);">
 
-  <hr>
-  <b>Developers:</b>
-  <p>Don't allow unescaped user-input into functions like: innerHTML, v-html, th:utext, etc.</p>
+    <div id="demo-login"
+        style="background:#fff;border:2px solid #d00;padding:14px;font-family:system-ui, sans-serif;max-width:520px;">
+        <h3 style="margin:0 0 6px;color:#d00;">⚠️ Demo Login Form (Not Real)</h3>
+        <p style="margin:0 0 12px;">
+            This is a <strong>dummy</strong> form for an authorized security demo. It does not authenticate or send data
+            anywhere.
+        </p>
 
-  <img src="./wojak-riding-brain-elephant-space.png">
+        <form id="demo-form" autocomplete="off">
+            <label style="display:block;margin:8px 0 4px;">Email</label>
+            <input id="demo-email" type="email" placeholder="user@example.com"
+                style="width:100%;padding:8px;border:1px solid #aaa;border-radius:6px;" required />
 
-  <script>console.log('Log demonstrating js being ran')</script>
+            <label style="display:block;margin:10px 0 4px;">Password</label>
+            <input id="demo-pass" type="password" placeholder="••••••••"
+                style="width:100%;padding:8px;border:1px solid #aaa;border-radius:6px;" required />
+
+            <button type="submit" style="margin-top:12px;padding:10px 12px;border:0;border-radius:6px;cursor:pointer;">
+                Sign in
+            </button>
+        </form>
+
+    </div>
+
+
 </body>
 
 </html>

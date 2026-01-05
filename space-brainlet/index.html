@@ -1,0 +1,64 @@
+<!--
+  This file can be used along side a variety of proof of concept exploits.
+
+  The original usage was to demonstrate the effects of reflected XSS and
+  insecure server configuration vulnerabilities that allowed an attacker to
+  perform a click jacking attack by overlaying this page on top of the 
+  vulnerable website. At the time, I was able to bypass a Cloudflare WAF by 
+  injecting an iframe with a link to this page. 
+
+  Now its just a link for random testing scenarios. 
+-->
+<!DOCTYPE html>
+
+<head>
+  <title>
+    Hax0red PoC example page
+  </title>
+
+  <style>
+    body {
+      cursor: none;
+      margin: 0;
+      height: 100vh;
+    }
+
+    #c {
+      position: fixed;
+      pointer-events: none;
+      left: 0;
+      top: 0;
+      transform: translate(-50%, -50%);
+      z-index: 999999;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>This is an example of you getting hax0red.</h1>
+  <p>Dont' worry you weren't actually hacked. This is just a demonstration of you being tricked into clicking a link and
+    a possible scenario of malicious code ran on your computer...</p>
+
+  <h3>Don't click sketchy links!</h3>
+
+  <hr>
+  <p>We hope you enjoy your experience here today.</p>
+
+  <img src="./wojak-riding-brain-elephant-space.png">
+
+  <img id="c" src="./omfgdogs.gif" alt="WOW">
+
+  <script>
+    const c = document.getElementById("c");
+    window.addEventListener("mousemove", (e) => {
+      c.style.left = e.clientX + "px";
+      c.style.top = e.clientY + "px";
+    });
+  </script>
+
+  <script>console.log('Log demonstrating js being ran')</script>
+
+</body>
+
+</html>

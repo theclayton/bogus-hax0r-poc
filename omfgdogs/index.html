@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+
+<head>
+    <title>OMFGDOGS but simplified</title>
+    <meta charset="UTF-8">
+
+    <style>
+        body {
+            background-image: url("./omfgdogs.gif");
+            margin: 0;
+            padding: 0;
+        }
+
+        .marquee {
+            width: 100%;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        .marquee-track {
+            font-family: Arial, Helvetica, sans-serif;
+            font-weight: bold;
+            display: inline-block;
+            animation: scroll 20s linear infinite;
+            font-size: 48px;
+        }
+
+        @keyframes scroll {
+            from {
+                transform: translateX(0);
+            }
+
+            to {
+                transform: translateX(-50%);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="marquee">
+        <div class="marquee-track" style="font-size:150px;">
+            This is an example of you getting hax0red.&nbsp;
+            This is an example of you getting hax0red.&nbsp;
+            This is an example of you getting hax0red.&nbsp;
+            This is an example of you getting hax0red.&nbsp;
+        </div>
+    </div>
+
+    <audio id="audio" preload="auto" loop>
+        <source src="./omfgdogs.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <script>
+        const a = document.getElementById("audio");
+
+        async function startAudio() {
+            try {
+                await a.play();
+                console.log("Audio started ✅");
+                remove();
+            } catch (err) {
+                console.log("Audio blocked ❌ (need click/tap)", err);
+            }
+        }
+
+        function remove() {
+            window.removeEventListener("pointerdown", startAudio);
+            window.removeEventListener("keydown", startAudio);
+            window.removeEventListener("touchstart", startAudio);
+            window.removeEventListener("click", startAudio);
+            window.removeEventListener("mousemove", startAudio);
+        }
+
+        window.addEventListener("pointerdown", startAudio, { once: true });
+        window.addEventListener("click", startAudio, { once: true });
+        window.addEventListener("keydown", startAudio, { once: true });
+        window.addEventListener("touchstart", startAudio, { once: true });
+        window.addEventListener("mousemove", startAudio, { once: true });
+    </script>
+</body>
